@@ -4,8 +4,11 @@
 
 @implementation BleAdvertise
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(BleAdvertise)
 
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"onBTStatusChange"];
+}
 RCT_EXPORT_METHOD(setCompanyId: (nonnull NSNumber *)companyId){
     RCTLogInfo(@"setCompanyId function called %@", companyId);
     self->peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
@@ -65,4 +68,64 @@ RCT_EXPORT_METHOD(getAdapterState:(RCTPromiseResolveBlock)resolve rejecter:(RCTP
 RCT_EXPORT_METHOD(checkIfBLESupported){
     RCTLogInfo(@"enableAdapter function called");
 }
+
+- (void)centralManagerDidUpdateState:(nonnull CBCentralManager *)central {
+    NSLog(@"Check BT status");
+    NSMutableDictionary *params =  [[NSMutableDictionary alloc] initWithCapacity:1];
+    switch (central.state) {
+        case CBManagerStatePoweredOff:
+            params[@"enabled"] = @NO;
+            NSLog(@"CoreBluetooth BLE hardware is powered off");
+            break;
+        case CBManagerStatePoweredOn:
+            params[@"enabled"] = @YES;
+            NSLog(@"CoreBluetooth BLE hardware is powered on and ready");
+            break;
+        case CBManagerStateResetting:
+            params[@"enabled"] = @NO;
+            NSLog(@"CoreBluetooth BLE hardware is resetting");
+            break;
+        case CBManagerStateUnauthorized:
+            params[@"enabled"] = @NO;
+            NSLog(@"CoreBluetooth BLE state is unauthorized");
+            break;
+        case CBManagerStateUnknown:
+            params[@"enabled"] = @NO;
+            NSLog(@"CoreBluetooth BLE state is unknown");
+            break;
+        case CBManagerStateUnsupported:
+            params[@"enabled"] = @NO;
+            NSLog(@"CoreBluetooth BLE hardware is unsupported on this platform");
+            break;
+        default:
+            break;
+    }
+    [self sendEventWithName:@"onBTStatusChange" body:params];
+}
+
+- (void)peripheralManagerDidUpdateState:(nonnull CBPeripheralManager *)peripheral {
+    switch (peripheral.state) {
+        case CBManagerStatePoweredOn:
+            NSLog(@"%ld, CBPeripheralManagerStatePoweredOn", peripheral.state);
+            break;
+        case CBManagerStatePoweredOff:
+            NSLog(@"%ld, CBPeripheralManagerStatePoweredOff", peripheral.state);
+            break;
+        case CBManagerStateResetting:
+            NSLog(@"%ld, CBPeripheralManagerStateResetting", peripheral.state);
+            break;
+        case CBManagerStateUnauthorized:
+            NSLog(@"%ld, CBPeripheralManagerStateUnauthorized", peripheral.state);
+            break;
+        case CBManagerStateUnsupported:
+            NSLog(@"%ld, CBPeripheralManagerStateUnsupported", peripheral.state);
+            break;
+        case CBManagerStateUnknown:
+            NSLog(@"%ld, CBPeripheralManagerStateUnknown", peripheral.state);
+            break;
+        default:
+            break;
+    }
+}
+
 @end
