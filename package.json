@@ -1,0 +1,33 @@
+{
+  "name": "react-native-ble-advertise",
+  "version": "0.1.0",
+  "description": "ble advertiser",
+  "main": "index.js",
+  "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postpublish": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag $PACKAGE_VERSION && git push --tags"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+	"ble",
+    "bluetooth"
+  ],
+  "repository": "https://github.com/barakataboujreich/react-native-ble-advertise",
+  "author": "barakat abou jreich <barakataboujreich@gmail.com>",
+  "license": "MIT",
+  "bugs": "https://github.com/barakataboujreich/react-native-ble-advertise/issues",
+  "homepage": "https://github.com/barakataboujreich/react-native-ble-advertise",
+  "peerDependencies": {
+    "react-native": ">=0.50"
+  },
+  "devDependencies": {},
+  "files": [
+        "android/",
+        "ios/",
+        "index.js",
+        "index.d.ts",
+        "react-native.config.js"
+  ]
+}
