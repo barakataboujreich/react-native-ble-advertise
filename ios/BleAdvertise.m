@@ -1,6 +1,5 @@
 #import "BleAdvertise.h"
 @import CoreBluetooth;
-@import CoreLocation;
 
 @implementation BleAdvertise
 
