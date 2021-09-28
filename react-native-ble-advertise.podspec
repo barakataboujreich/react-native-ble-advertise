@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "7.0" }
 
   s.source       = { :git => "https://github.com/barakataboujreich/react-native-ble-advertise.git", :tag => "v#{s.version}" }
-  s.source_files  = "apple/**/*.{h,m}"
+  s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency 'React-Core'
 end
