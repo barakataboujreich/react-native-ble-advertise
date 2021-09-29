@@ -1,5 +1,6 @@
 #import "BleAdvertise.h"
 @import CoreBluetooth;
+@import CoreLocation;
 
 @implementation BleAdvertise
 
@@ -13,7 +14,7 @@ RCT_EXPORT_METHOD(setCompanyId: (nonnull NSNumber *)companyId){
     self->peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
 }
 
-RCT_EXPORT_METHOD(broadcast:(NSString *)uid major:(NSNumber *)major minor:(NSNumber *)minor resolve: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(broadcast:(nonnull NSString *)uid major:(nonnull NSNumber *)major minor:(nonnull NSNumber *)minor resolve: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     RCTLogInfo(@"Broadcast function called %@ with major %@ and minor %@", uid, major, minor);
     NSString *identifier = @"Kindoo";
