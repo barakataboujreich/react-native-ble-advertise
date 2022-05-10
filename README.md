@@ -44,9 +44,16 @@ BLEAdvertise.broadcast(uuid, major, minor)
                 .then(success => {
                     console.log('broadcast started');
                 }).catch(error => { 
-					console.log('broadcast failed with: ' + error);
-				});
+		    console.log('broadcast failed with: ' + error);
+		});
 ```
+the advertising data as per example will be broadcasted in the following order
+
+E000021544C13E43097A9C9F537F5666A6840C08CD000003
+
+companyID (E000), iBeacon identifier(0215), UUID(44C13E43097A9C9F537F5666A6840C08), Major(CD00), Minor(0003)
+
+
 
 - To stop advertising, you need to call the stopBroadcast method
 ```js
@@ -61,8 +68,8 @@ BLEAdvertise.stopBroadcast()
                 .then(success => {
                     console.log('broadcast stopped');
                 }).catch(error => { 
-					console.log('broadcast failed to stop with: ' + error);
-				});
+		    console.log('broadcast failed to stop with: ' + error);
+		});
 ```
 
 ## License
