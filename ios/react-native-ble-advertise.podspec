@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = package['license']
 
   s.platform     = :ios, '10.0'
-  s.source       = { :git => "https://github.com/vitorpamplona/react-native-ble-advertiser.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/barakataboujreich/react-native-ble-advertise.git", :tag => "#{s.version}" }
   s.source_files = '*.{h,m}'
   s.requires_arc = true
 
