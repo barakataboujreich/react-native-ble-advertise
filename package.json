@@ -23,12 +23,4 @@
     "react-native": ">=0.50"
   },
   "devDependencies": {},
-  "files": [
-        "android/",
-        "ios/",
-        "index.js",
-        "index.d.ts",
-        "react-native.config.js",
-	"react-native-ble-manager.podspec"
-  ]
 }
