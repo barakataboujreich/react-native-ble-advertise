@@ -2,8 +2,6 @@
 var React = require("react-native");
 var bleAdvertise = React.NativeModules.BleAdvertise;
 
-console.log("bleAdvertise: " + JSON.stringify(bleAdvertise));
-
 class BleAdvertise {
   constructor() {
   }
