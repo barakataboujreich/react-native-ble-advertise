@@ -24,8 +24,5 @@
     "name": "barakat abou jreich",
     "url": "https://github.com/barakataboujreich"
   },
-  "scripts": {
-    "version": "git add -A",
-    "postversion": "git push && git push --tags"
-  }
+  "devDependencies": {}
 }
