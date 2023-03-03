@@ -1,4 +1,4 @@
-package com.reactnativebleadvertise;
+package com.bleadvertise;
 
 import androidx.annotation.NonNull;
 

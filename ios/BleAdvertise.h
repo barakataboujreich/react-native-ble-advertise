@@ -1,3 +1,10 @@
+
+//
+//  BleAdvertise.h
+//  Kindoo
+//
+//  Created by barakat abou jreich on 3/1/23.
+//
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 #import <React/RCTLog.h>
@@ -13,3 +20,4 @@
 
 
 @end
+/* BleAdvertise_h */

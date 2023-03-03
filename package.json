@@ -1,33 +1,31 @@
 {
   "name": "react-native-ble-advertise",
-  "version": "0.1.0",
-  "description": "ble advertiser",
-  "main": "index.js",
-  "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "postpublish": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag $PACKAGE_VERSION && git push --tags"
+  "version": "0.3.0",
+  "description": "A BLE advertising module for react native.",
+  "main": "BleAdvertise",
+  "types": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barakataboujreich/react-native-ble-advertise.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barakataboujreich/react-native-ble-advertise/issues"
   },
   "keywords": [
     "react-native",
-    "ios",
     "android",
-	"ble",
-    "bluetooth"
+    "ios",
+    "ble",
+    "bluetooth",
+    "low energy"
   ],
-  "repository": "https://github.com/barakataboujreich/react-native-ble-advertise",
-  "author": "barakat abou jreich <barakataboujreich@gmail.com>",
-  "license": "MIT",
-  "bugs": "https://github.com/barakataboujreich/react-native-ble-advertise/issues",
-  "homepage": "https://github.com/barakataboujreich/react-native-ble-advertise",
-  "peerDependencies": {
-    "react-native": ">=0.50"
+  "license": "Apache-2.0",
+  "author": {
+    "name": "barakat abou jreich",
+    "url": "https://github.com/barakataboujreich"
   },
-  "devDependencies": {},
-  "files": [
-        "android/",
-        "ios/",
-        "index.js",
-        "index.d.ts",
-        "react-native.config.js"
-  ]
+  "scripts": {
+    "version": "git add -A",
+    "postversion": "git push && git push --tags"
+  }
 }

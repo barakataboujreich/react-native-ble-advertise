@@ -1,14 +1,22 @@
+
+//
+//  BleAdvertise.m
+//  Kindoo
+//
+//  Created by barakat abou jreich on 3/1/23.
+//
+
 #import "BleAdvertise.h"
 @import CoreBluetooth;
 @import CoreLocation;
 
 @implementation BleAdvertise
-
 RCT_EXPORT_MODULE(BleAdvertise)
 
 - (NSArray<NSString *> *)supportedEvents {
     return @[@"onBTStatusChange"];
 }
+
 RCT_EXPORT_METHOD(setCompanyId: (nonnull NSNumber *)companyId){
     RCTLogInfo(@"setCompanyId function called %@", companyId);
     self->peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
@@ -126,6 +134,25 @@ RCT_EXPORT_METHOD(checkIfBLESupported){
         default:
             break;
     }
+}// Example method
+// See // https://reactnative.dev/docs/native-modules-ios
+RCT_REMAP_METHOD(multiply,
+                 multiplyWithA:(double)a withB:(double)b
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    NSNumber *result = @(a * b);
+
+    resolve(result);
 }
+
+// Don't compile this code when we build for the old architecture.
+#ifdef RCT_NEW_ARCH_ENABLED
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
+{
+    return std::make_shared<facebook::react::NativeBleAdvertiseSpecJSI>(params);
+}
+#endif
 
 @end
