@@ -84,25 +84,25 @@ public class BleAdvertiseModule extends ReactContextBaseJavaModule {
         try {
             if (mBluetoothAdapter == null) {
                 Log.w("BleAdvertiseModule", "Device does not support Bluetooth. Adapter is Null");
-                promise.reject("Device does not support Bluetooth. Adapter is Null", "Device does not support Bluetooth. Adapter is Null");
+                promise.reject("Device does not support Bluetooth. Adapter is Null");
                 return;
             }
 
             if (companyId == 0x0000) {
                 Log.w("BleAdvertiseModule", "Invalid company id");
-                promise.reject("Invalid company id", "Invalid company id");
+                promise.reject("Invalid company id");
                 return;
             }
 
             if (mBluetoothAdapter == null) {
                 Log.w("BleAdvertiseModule", "mBluetoothAdapter unavailable");
-                promise.reject("mBluetoothAdapter unavailable", "mBluetoothAdapter unavailable");
+                promise.reject("mBluetoothAdapter unavailable");
                 return;
             }
 
-            if (mObservedState != null && !mObservedState) {
+            if (mBluetoothAdapter.isEnabled() == false) {
                 Log.w("BleAdvertiseModule", "Bluetooth disabled");
-                promise.reject("Bluetooth disabled", "Bluetooth disabled");
+                promise.reject("Bluetooth disabled");
                 return;
             }
 
@@ -143,7 +143,7 @@ public class BleAdvertiseModule extends ReactContextBaseJavaModule {
             mAdvertiserCallbackList.put(uid, tempCallback);
         }
         catch(Exception e) {
-            promise.reject("broadcast error", e);
+           promise.reject(e);
         }
     }
 
@@ -199,13 +199,13 @@ public class BleAdvertiseModule extends ReactContextBaseJavaModule {
 
         if (mBluetoothAdapter == null) {
             Log.w("BleAdvertiseModule", "mBluetoothAdapter unavailable");
-            promise.reject("mBluetoothAdapter unavailable", "mBluetoothAdapter unavailable");
+            promise.reject("mBluetoothAdapter unavailable");
             return;
         }
 
-        if (mObservedState != null && !mObservedState) {
+        if (mBluetoothAdapter.isEnabled() == false) {
             Log.w("BleAdvertiseModule", "Bluetooth disabled");
-            promise.reject("Bluetooth disabled", "Bluetooth disabled");
+            promise.reject("Bluetooth disabled");
             return;
         }
 
@@ -297,5 +297,6 @@ public class BleAdvertiseModule extends ReactContextBaseJavaModule {
             promise.resolve(settingsInEffect.toString());
         }
     }
+    
 
 }
