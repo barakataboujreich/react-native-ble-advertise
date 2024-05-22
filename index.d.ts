@@ -8,7 +8,7 @@ declare module "react-native-ble-advertise" {
       connectable?: boolean;
   }
   
-    export function broadcast(uuid:string, myMajor:string, myMinor:string): Promise<void>;
+    export function broadcast(uuid:string, myMajor:number, myMinor:number): Promise<void>;
     export function stopBroadcast(): Promise<void>;
     export function checkIfBLESupported(): Promise<void>;
     export function readRSSI(peripheralID: string): Promise<number>;

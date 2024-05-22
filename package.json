@@ -1,6 +1,6 @@
 {
   "name": "react-native-ble-advertise",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A BLE advertising module for react native.",
   "main": "BleAdvertise",
   "types": "./index.d.ts",
