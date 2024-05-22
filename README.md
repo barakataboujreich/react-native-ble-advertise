@@ -62,8 +62,9 @@ BleAdvertise.setCompanyId(0x00E0);
 import BleAdvertise from "react-native-ble-advertise";
 // ...
 const uuid = "44C13E43-097A-9C9F-537F-5666A6840C08";
-const major = "CD00";
-const minor = "0003";
+const major = parseInt("CD00", 16);
+const minor = parseInt("0003", 16);
+
 BLEAdvertise.broadcast(uuid, major, minor)
                 .then(success => {
                     console.log('broadcast started');
