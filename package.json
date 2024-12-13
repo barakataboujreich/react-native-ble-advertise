@@ -1,6 +1,6 @@
 {
   "name": "react-native-ble-advertise",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "react-native-ble-advertise",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -54,7 +54,7 @@
     "type": "git",
     "url": "git+https://github.com/barakataboujreich/react-native-ble-advertise.git"
   },
-  "author": "barakataboujreich <bako.j.93@gmail.com> (https://github.com/barakataboujreich)",
+  "author": "barakataboujreich (https://github.com/barakataboujreich)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/barakataboujreich/react-native-ble-advertise/issues"
