@@ -26,7 +26,7 @@ import android.bluetooth.le.BluetoothLeAdvertiser;
 
 public class BleAdvertiseModule extends NativeBleAdvertiseSpec {
 
-    public static String NAME = "NativeBleAdvertise";
+    public static String NAME = "BleAdvertise";
     private BluetoothAdapter mBluetoothAdapter;
     private static Hashtable<String, BluetoothLeAdvertiser> mAdvertiserList;
     private static Hashtable<String, AdvertiseCallback> mAdvertiserCallbackList;
