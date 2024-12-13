@@ -1,28 +1,45 @@
 package com.bleadvertise;
+import androidx.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-
-import com.facebook.react.ReactPackage;
+import com.facebook.react.TurboReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
+import com.facebook.react.module.model.ReactModuleInfo;
+import com.facebook.react.module.model.ReactModuleInfoProvider;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class BleAdvertisePackage implements ReactPackage {
-    @NonNull
-    @Override
-    public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
-        List<NativeModule> modules = new ArrayList<>();
-        modules.add(new BleAdvertiseModule(reactContext));
-        return modules;
-    }
 
-    @NonNull
-    @Override
-    public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+public class BleAdvertisePackage extends TurboReactPackage {
+
+  @Nullable
+  @Override
+  public NativeModule getModule(String name, ReactApplicationContext reactContext) {
+    if (name.equals(BleAdvertiseModule.NAME)) {
+      return new BleAdvertiseModule(reactContext);
+    } else {
+      return null;
     }
+  }
+
+  @Override
+  public ReactModuleInfoProvider getReactModuleInfoProvider() {
+    return () -> {
+      final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
+      moduleInfos.put(
+          BleAdvertiseModule.NAME,
+          new ReactModuleInfo(
+              BleAdvertiseModule.NAME,
+              BleAdvertiseModule.NAME,
+              false, // canOverrideExistingModule
+              false, // needsEagerInit
+              false, // isCxxModule
+              true // isTurboModule
+      ));
+      return moduleInfos;
+    };
+  }
 }

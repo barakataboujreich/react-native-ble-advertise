@@ -1,18 +1,45 @@
-import { NativeModules, Platform } from 'react-native';
+import { Platform } from 'react-native';
 
-const LINKING_ERROR =
-  `The package 'react-native-ble-advertise' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
 
-export const BleAdvertise = NativeModules.BleAdvertise
-  ? NativeModules.BleAdvertise
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+const BleAdvertise = Platform.OS === 'web'
+  ? null
+  : require('./NativeBleAdvertise').default;
+
+  class BleAdvertiser {
+    broadcast(uuid: string, myMajor: number, myMinor: number): Promise<string> {
+      return new Promise<string>((fulfill, reject) => {
+        BleAdvertise.broadcast(uuid, myMajor, myMinor).then(() => {
+          fulfill("success");
+        }).catch((err: string) => {
+          reject(err);
+        })
+      });
+    }
+  
+    stopBroadcast(): Promise<string> {
+      return new Promise<string>((fulfill, reject) => {
+        BleAdvertise.stopBroadcast().then(() => {
+          fulfill("success");
+        }).catch((err: string) => {
+          reject(err);
+        });
+      });
+    }
+  
+    checkIfBLESupported(): Promise<string> {
+      return new Promise<string>((fulfill, reject) => {
+        BleAdvertise.checkIfBLESupported().then((data: string) => {
+          fulfill(data);
+        }).catch((err: string) => {
+          reject(err);
+        });
+      });
+    }
+  
+    setCompanyId(companyID: number): void {
+      BleAdvertise.setCompanyId(companyID);
+    }
+  }
+  
+  
+  export default new BleAdvertiser();

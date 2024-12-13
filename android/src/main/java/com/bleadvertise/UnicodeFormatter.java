@@ -30,4 +30,4 @@ public class UnicodeFormatter {
         return bb.array();
     }
 
-} // class
+}
