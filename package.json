@@ -1,6 +1,6 @@
 {
   "name": "react-native-ble-advertise",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "react-native-ble-advertise",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -119,8 +119,7 @@
     "github": {
       "release": true
     },
-    "plugins": {
-    }
+    "plugins": {}
   },
   "eslintConfig": {
     "root": true,
