@@ -1,5 +1,5 @@
 #import "BleAdvertise.h"
-#import "react_native_ble_advertise-Swift.h"
+#import "react_native_ble_advertise/react_native_ble_advertise-Swift.h"
 
 @implementation BleAdvertise {
   BleAdvertiseImpl *moduleImpl;
