@@ -119,11 +119,7 @@
     "github": {
       "release": true
     },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "conventional-changelog-angular"
-      }
-    }
+    "plugins": {}
   },
   "eslintConfig": {
     "root": true,
