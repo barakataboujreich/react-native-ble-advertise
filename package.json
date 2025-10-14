@@ -1,6 +1,6 @@
 {
   "name": "react-native-ble-advertise",
-  "version": "0.1.0",
+  "version": "2.0.3",
   "description": "A BLE advertising module for react native.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
